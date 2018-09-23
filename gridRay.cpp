@@ -161,13 +161,23 @@ public:
 	bool OnUserCreate() override
 	{
 		// Called once at the start, so create things here
-        dir.normalize();
 		return true;
 	}
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
 		// called once per frame
+        const auto& but0 = GetMouse(0);
+        const auto& but1 = GetMouse(1);
+        Vec m(GetMouseX(), GetMouseY());
+        if (but0.bPressed || but0.bHeld){
+            pos = m;
+        }
+        if (but1.bPressed || but1.bHeld){
+            dir = m - pos;
+        }
+
+        dir.normalize();
 
         //FillRect(0, 0, ScreenWidth(), ScreenHeight(), olc::Pixel(0, 0, 0));
         Clear(olc::Pixel(0, 0, 0));
