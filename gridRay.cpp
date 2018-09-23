@@ -27,11 +27,17 @@ public:
         return *this;
     }
 
+    inline Vec& operator*=(float t) {
+        int n = size();
+        for(int i=0; i<n; ++i)
+            at(i) *= t;
+        return *this;
+    }
+
     inline Vec operator*(float t) const{
         int n = size();
-        auto a = Vec(n);
-        for(int i=0; i<n; ++i)
-            a[i] = at(i) * t;
+        auto a = Vec(*this);
+        a *= t;
         return a;
     }
 
@@ -65,10 +71,7 @@ public:
 
     void normalize() {
         float rlen = 1.0f/length();
-        int n = size();
-        for(int i=0; i<n; ++i){
-            at(i) *= rlen;
-        }
+        (*this) *= rlen;
     }
 
 };
@@ -149,7 +152,7 @@ private:
     float stepX = 10.0f;
     float stepY = 10.0f;
 
-    olc::Pixel gridPix = olc::Pixel(127, 127, 127);
+    olc::Pixel gridPix = olc::VERY_DARK_GREY;
 
     Vec pos = Vec(50, 50);
     Vec dir = Vec(2, 1);
@@ -183,7 +186,9 @@ public:
         Draw(pos[0], pos[1], olc::RED);
 
         GridRay gridRay(dir);
-        for(auto npos = gridRay.nearest(pos); isOnScreen(npos); npos = gridRay.nearest(npos)){
+        Vec p(pos[0]/stepX, pos[1]/stepY);
+        for(auto np = gridRay.nearest(p); isOnScreen(np); np = gridRay.nearest(np)){
+            Vec npos(np[0]* stepX, np[1] * stepY);
             Draw(npos[0], npos[1], olc::WHITE);
         }
 
@@ -210,7 +215,7 @@ private:
 int main()
 {
 	GridRayEngine gridRayEngine;
-	if (gridRayEngine.Construct(256, 240, 4, 4))
+	if (gridRayEngine.Construct(128, 120, 8, 8))
 		gridRayEngine.Start();
 
 	return 0;
