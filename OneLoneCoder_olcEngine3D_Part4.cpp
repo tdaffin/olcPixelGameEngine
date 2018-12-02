@@ -58,7 +58,7 @@ Last Updated: 01/09/2018
 #include "olcPixelGameEngine.h"
 
 #include <fstream>
-#include <strstream>
+#include <sstream>
 #include <algorithm>
 #include <string>
 using namespace std;
@@ -591,7 +591,8 @@ public:
 		tris.push_back(triangle{vec3d(1.0f, 0.0f, 1.0f), vec3d(0.0f, 0.0f, 0.0f), vec3d(1.0f, 0.0f, 0.0f), vec2d(0.0f, 1.0f), vec2d(1.0f, 0.0f), vec2d(1.0f, 1.0f)});
 
 
-		sprTex1 = new olc::Sprite("Jario.spr");
+		//sprTex1 = new olc::Sprite("Jario.spr");
+		sprTex1 = new olc::Sprite("car_top1.png");
 
 		// Projection Matrix
 		matProj = Matrix_MakeProjection(90.0f, (float)ScreenHeight() / (float)ScreenWidth(), 0.1f, 1000.0f);
