@@ -825,8 +825,8 @@ namespace olc
 
 	Pixel Sprite::Sample(float x, float y)
 	{
-		int32_t sx = (int32_t)(x * (float)width);
-		int32_t sy = (int32_t)(y * (float)height);
+		int32_t sx = (int32_t)((x * (float)width) - 0.5f);
+		int32_t sy = (int32_t)((y * (float)height) - 0.5f);
 		return GetPixel(sx, sy);
 	}
 
