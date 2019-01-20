@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "g++ \"${file}\" -g -DUNICODE -I/usr/include/GL -lX11 -lGL -lpthread -lpng -std=c++14",
+            "command": "g++ \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}.bin\" -g -DUNICODE -I/usr/include/GL -lX11 -lGL -lpthread -lpng -std=c++14",
             "problemMatcher": [
                 "$gcc"
             ],
@@ -26,7 +26,10 @@
         {
             "label": "run",
             "type": "shell",
-            "command": "${workspaceFolder}/a.out",
+            "command": "${fileDirname}/${fileBasenameNoExtension}.bin",
+            "options": {
+                "cwd": "${fileDirname}",
+            },
             "problemMatcher": []
         },
         {
