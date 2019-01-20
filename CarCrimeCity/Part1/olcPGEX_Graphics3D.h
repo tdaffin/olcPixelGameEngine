@@ -58,7 +58,7 @@
 
 	Author
 	~~~~~~
-	David Barr, aka javidx9, ©OneLoneCoder 2018
+	David Barr, aka javidx9, ï¿½OneLoneCoder 2018
 */
 
 
@@ -68,6 +68,7 @@
 #include <algorithm>
 #include <vector>
 #include <list>
+#include <cstring>
 #undef min
 #undef max
 
