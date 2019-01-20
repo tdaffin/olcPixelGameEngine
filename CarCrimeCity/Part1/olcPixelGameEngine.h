@@ -133,7 +133,7 @@
 
 	Author
 	~~~~~~ 
-	David Barr, aka javidx9, ©OneLoneCoder 2018, 2019
+	David Barr, aka javidx9, ï¿½OneLoneCoder 2018, 2019
 */
 
 ////////////////////////////////////////////////////////////////////////////////////////// 
@@ -1617,6 +1617,12 @@ namespace olc
 		auto tp1 = std::chrono::system_clock::now();
 		auto tp2 = std::chrono::system_clock::now();
 
+#ifndef _WIN32
+		// Map the linux mouse buttons to the same ordinals as windows
+		// Also done in olcConsoleGameEngineSDL.h in a different way
+		const int mouseMap[5] = {0, 2, 1, 3, 4};
+#endif
+
 		while (bAtomActive)
 		{
 			// Run as fast as possible
@@ -1656,11 +1662,11 @@ namespace olc
 					}
 					else if (xev.type == ButtonPress)
 					{
-						pMouseNewState[xev.xbutton.button-1] = true;
+						pMouseNewState[mouseMap[xev.xbutton.button-1]] = true;
 					}
 					else if (xev.type == ButtonRelease)
 					{
-						pMouseNewState[xev.xbutton.button-1] = false;
+						pMouseNewState[mouseMap[xev.xbutton.button-1]] = false;
 					}
 					else if (xev.type == MotionNotify)
 					{
