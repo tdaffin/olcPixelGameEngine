@@ -2,7 +2,7 @@
 	olcPixelGameEngine.h
 
 	+-------------------------------------------------------------+
-	|           OneLoneCoder Pixel Game Engine v1.17              |
+	|           OneLoneCoder Pixel Game Engine v1.18              |
 	| "Like the command prompt console one, but not..." - javidx9 |
 	+-------------------------------------------------------------+
 
@@ -1005,15 +1005,15 @@ namespace olc
 		if (!ifs.is_open()) return olc::FAIL;
 
 		// 1) Read Map
-		size_t nMapEntries;
-		ifs.read((char*)&nMapEntries, sizeof(size_t));
-		for (size_t i = 0; i < nMapEntries; i++)
+		uint32_t nMapEntries;
+		ifs.read((char*)&nMapEntries, sizeof(uint32_t));
+		for (uint32_t i = 0; i < nMapEntries; i++)
 		{
-			size_t nFilePathSize = 0;
-			ifs.read((char*)&nFilePathSize, sizeof(size_t));
+			uint32_t nFilePathSize = 0;
+			ifs.read((char*)&nFilePathSize, sizeof(uint32_t));
 
 			std::string sFileName(nFilePathSize, ' ');
-			for (size_t j = 0; j < nFilePathSize; j++)
+			for (uint32_t j = 0; j < nFilePathSize; j++)
 				sFileName[j] = ifs.get();
 
 			sEntry e;
@@ -2054,7 +2054,7 @@ namespace olc
 
 		// Define window furniture
 		DWORD dwExStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
-		DWORD dwStyle = WS_CAPTION | WS_SYSMENU | WS_VISIBLE; // | WS_THICKFRAME;
+		DWORD dwStyle = WS_CAPTION | WS_SYSMENU | WS_VISIBLE;// | WS_THICKFRAME;
 
 		int nCosmeticOffset = 30;
 		nViewW = nWindowWidth;

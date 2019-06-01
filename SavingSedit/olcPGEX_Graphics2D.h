@@ -86,30 +86,30 @@ namespace olc
 		class Transform2D
 		{
 		public:
-			inline Transform2D();
+			 Transform2D();
 
 		public:
 			// Set this transformation to unity
-			inline void Reset();
+			 void Reset();
 			// Append a rotation of fTheta radians to this transform
-			inline void Rotate(float fTheta);
+			 void Rotate(float fTheta);
 			// Append a translation (ox, oy) to this transform
-			inline void Translate(float ox, float oy);
+			 void Translate(float ox, float oy);
 			// Append a scaling operation (sx, sy) to this transform
-			inline void Scale(float sx, float sy);
+			 void Scale(float sx, float sy);
 			// Append a shear operation (sx, sy) to this transform
-			inline void Shear(float sx, float sy);
+			 void Shear(float sx, float sy);
 
-			inline void Perspective(float ox, float oy);
+			 void Perspective(float ox, float oy);
 			// Calculate the Forward Transformation of the coordinate (in_x, in_y) -> (out_x, out_y)
-			inline void Forward(float in_x, float in_y, float &out_x, float &out_y);
+			 void Forward(float in_x, float in_y, float &out_x, float &out_y);
 			// Calculate the Inverse Transformation of the coordinate (in_x, in_y) -> (out_x, out_y)
-			inline void Backward(float in_x, float in_y, float &out_x, float &out_y);
+			 void Backward(float in_x, float in_y, float &out_x, float &out_y);
 			// Regenerate the Inverse Transformation
-			inline void Invert();
+			 void Invert();
 
 		private:
-			inline void Multiply();
+			 void Multiply();
 			float matrix[4][3][3];
 			int nTargetMatrix;
 			int nSourceMatrix;
@@ -118,7 +118,7 @@ namespace olc
 
 	public:
 		// Draws a sprite with the transform applied
-		inline static void DrawSprite(olc::Sprite *sprite, olc::GFX2D::Transform2D &transform);
+		 static void DrawSprite(olc::Sprite *sprite, olc::GFX2D::Transform2D &transform);
 	};
 }
 
