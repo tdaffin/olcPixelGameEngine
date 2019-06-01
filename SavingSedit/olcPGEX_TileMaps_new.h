@@ -41,7 +41,7 @@ namespace olc
 		{
 		public:
 			Layer();
-			void Create(int32_t w, int32_t h, int32_t tw, int32_t th);
+			void Create(int32_t w, int32_t h, int32_t tw, int32_t th, T* pNotile);
 			olc::rcode LoadFromFile(std::string filename);
 			olc::rcode SaveToFile(std::string filename);
 			T* GetTile(int32_t x, int32_t y);
@@ -53,6 +53,7 @@ namespace olc
 			int32_t nTileHeight;
 		
 		private:
+			T		*pNoTile;
 			T		*pTiles;
 			
 		};
@@ -109,7 +110,7 @@ namespace olc
 
 
 	template <class T>
-	void TILE::Layer<T>::Create(int32_t w, int32_t h, int32_t tw, int32_t th)
+	void TILE::Layer<T>::Create(int32_t w, int32_t h, int32_t tw, int32_t th, T* pNotile)
 	{
 		nLayerWidth = w;
 		nLayerHeight = h;
@@ -121,6 +122,7 @@ namespace olc
 		{
 			pTiles[i].id = 0;
 		}
+		pNoTile = pNotile;
 	}
 
 	template <class T>

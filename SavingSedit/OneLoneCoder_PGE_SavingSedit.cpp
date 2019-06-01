@@ -133,6 +133,7 @@ private:
 	
 	int nTileSizeX = 64;
 	int nTileSizeY = 64;
+	olc::TILE::BasicTile					noTile;
 	olc::TILE::Layer<olc::TILE::BasicTile>	layerWorld;
 	olc::TILE::Layer<olc::TILE::BasicTile>	layerCollectibles;
 	olc::TILE::Layer<olc::TILE::BasicTile>	layerJavid;
@@ -843,9 +844,9 @@ public:
 		sprMiniMap = new olc::Sprite(nChallengeMapSizeX, nChallengeMapSizeY);
 		printf("D\n");
 		// Create tilemap to match dimensions of generated maze
-		layerWorld.Create(nMapWidth, nMapHeight, nTileSizeX, nTileSizeY);
-		layerCollectibles.Create(nMapWidth, nMapHeight, nTileSizeX, nTileSizeY);
-		layerJavid.Create(nMapWidth, nMapHeight, nTileSizeX, nTileSizeY);
+		layerWorld.Create(nMapWidth, nMapHeight, nTileSizeX, nTileSizeY, &noTile);
+		layerCollectibles.Create(nMapWidth, nMapHeight, nTileSizeX, nTileSizeY, &noTile);
+		layerJavid.Create(nMapWidth, nMapHeight, nTileSizeX, nTileSizeY, &noTile);
 
 		printf("D\n");
 		// Transfer over boolean maze to tilemap
