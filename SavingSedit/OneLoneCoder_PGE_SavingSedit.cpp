@@ -57,7 +57,7 @@
 
 	Author
 	~~~~~~
-	David Barr, aka javidx9, ©OneLoneCoder 2019
+	David Barr, aka javidx9, ï¿½OneLoneCoder 2019
 */
 
 #define OLC_PGE_APPLICATION
@@ -569,7 +569,10 @@ public:
 			return true;
 		}
 
-		rpPlayer.LoadPack("./discres/savingsedit.olcdat");
+		if (rpPlayer.LoadPack("./discres/savingsedit.olcdat") != olc::OK){
+			DrawString(60, 256, "Data pack not found!", olc::RED, 2);
+			return false;
+		}
 
 		sndHelperChange = olc::SOUND::LoadAudioSample("E:\\linshare\\olcSimpleGameEngine\\discres\\PP_Negative_Trigger_1_2.wav", &rpPlayer);
 		sndJump = olc::SOUND::LoadAudioSample("E:\\linshare\\olcSimpleGameEngine\\discres\\PP_Jump_1_5.wav", &rpPlayer);
